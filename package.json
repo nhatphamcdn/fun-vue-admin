@@ -9,8 +9,10 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "typecheck": "vue-tsc --noEmit",
-    "format": "prettier --write ./src",
-    "eslint:debug:fix": "eslint --debug --ext .js,.ts,.vue src --fix"
+    "format": "prettier --write ./src ./cypress",
+    "eslint:debug": "eslint --debug --ext .js,.ts,.vue src cypress",
+    "eslint:fix": "eslint --ext .js,.ts,.vue src cypress --fix",
+    "test:component": "npx cypress run --component"
   },
   "dependencies": {
     "vue": "^3.2.37"
@@ -18,10 +20,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@types/node": "^18.6.1",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "@vitejs/plugin-vue": "^3.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "cypress": "^10.3.1",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -37,9 +41,7 @@
   },
   "lint-staged": {
     "*.{js,vue,ts}": [
-      "prettier --write",
-      "eslint --ext .js,.ts,.vue src --fix",
-      "vue-tsc --noEmit"
+      "prettier --write"
     ],
     "*.{scss, css, md}": [
       "prettier --write"
