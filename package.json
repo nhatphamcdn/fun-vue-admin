@@ -2,19 +2,44 @@
   "name": "fun-vue-admin",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "dev": "vite --mode serve-dev --host",
+    "test": "vite --mode serve-test --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "typecheck": "vue-tsc --noEmit",
+    "format": "prettier --write ./src",
+    "eslint:debug:fix": "eslint --debug --ext .js,.ts,.vue src --fix"
   },
   "dependencies": {
     "vue": "^3.2.37"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
     "@vitejs/plugin-vue": "^3.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
+    "vue-eslint-parser": "^9.0.3",
     "vue-tsc": "^0.38.4"
+  },
+  "lint-staged": {
+    "*.{js,vue,ts}": [
+      "prettier --write",
+      "eslint --ext .js,.ts,.vue src --fix",
+      "vue-tsc --noEmit"
+    ],
+    "*.{scss, css, md}": [
+      "prettier --write"
+    ]
   }
 }
