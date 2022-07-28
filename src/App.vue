@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import TestComponent from "./components/TestComponent.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <TestComponent />
+  <router-link to="/">Dashboard</router-link>
+  <router-link to="/settings">Settings</router-link>
+  <router-view></router-view>
 </template>
