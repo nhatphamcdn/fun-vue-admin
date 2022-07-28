@@ -12,13 +12,14 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended",
-    "prettier",
+    "prettier"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
-    "parser": "@typescript-eslint/parser",
+    "parser": "@typescript-eslint/parser"
   },
   "rules": {
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "vue/multi-word-component-names": "off"
   }
 }
