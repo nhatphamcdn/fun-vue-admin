@@ -16,15 +16,42 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Run check vue-tsc
-        run: npm run typecheck
-
-      - name: Run fix eslint
-        run: npm run eslint:fix
       
       - name: Run testing the components
         run: npm run test:component
+
+  type-check:
+    name: Type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
       
-      - name: Build
-        run: npm run build
+      - name: Run testing the components
+        run: npm run typecheck
+        
+  eslint:
+    name: Eslint check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run testing the components
+        run: npx eslint --ext .js,.ts,.vue src cypress
+
+    
