@@ -5,3 +5,7 @@
   <router-link to="/settings">Settings</router-link>
   <router-view></router-view>
 </template>
+
+<style lang="scss">
+//
+</style>
